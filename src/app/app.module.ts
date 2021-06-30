@@ -10,6 +10,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { AppEffects } from './store/effects/app.effects';
 import { reducers, metaReducers } from './store/reducers';
+import { NgProgressModule } from 'ngx-progressbar';
+import { ProgressbarEffects } from './store/effects/progressbar.effects';
+import {
+  progressbarFeatureKey,
+  progrssbarReducer,
+} from './store/reducers/progressbar.reducer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +40,13 @@ import { reducers, metaReducers } from './store/reducers';
       stateKey: 'router',
       routerState: RouterState.Minimal,
     }),
+    NgProgressModule.withConfig({
+      color: 'red',
+      thick: true,
+    }),
+    StoreModule.forFeature(progressbarFeatureKey, progrssbarReducer),
+    EffectsModule.forFeature([ProgressbarEffects]),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
