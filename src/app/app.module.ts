@@ -17,9 +17,13 @@ import {
   progrssbarReducer,
 } from './store/reducers/progressbar.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ProgressbarComponent } from './progressbar/progressbar.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProgressbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -47,6 +51,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StoreModule.forFeature(progressbarFeatureKey, progrssbarReducer),
     EffectsModule.forFeature([ProgressbarEffects]),
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
